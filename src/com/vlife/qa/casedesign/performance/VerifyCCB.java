@@ -11,7 +11,7 @@ import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.vlife.qa.util.UiAutomatorUtil;
 
-public class TestCase extends UiAutomatorTestCase {
+public class VerifyCCB extends UiAutomatorTestCase {
 	public void testCCB() throws RemoteException, UiObjectNotFoundException{
 		UiDevice.getInstance().pressBack();
 		UiDevice.getInstance().pressBack();

@@ -1,8 +1,9 @@
-package com.vlife.qa.casedesign.performance;
+package com.vlife.qa.casedesign.tc;
 
 import com.vlife.qa.i.FileManagerInterface;
+import com.vlife.qa.i.FileMangerInterface_v2;
 
-public class FileManagerTestCase_v3 implements FileManagerInterface{
+public class FileManagerTestCase_v2 implements FileManagerInterface,FileMangerInterface_v2{
 
 	/**
 	 * @param args
@@ -14,14 +15,14 @@ public class FileManagerTestCase_v3 implements FileManagerInterface{
 
 	@Override
 	public void testNewFolder() {
-		System.out.print("New Folder.....");
+		System.out.println("New Folder");
 		
 	}
 
 	@Override
 	public void testNewFile() {
-		// TODO Auto-generated method stub
 		
+		System.out.println("New File");
 	}
 
 	@Override
@@ -56,6 +57,30 @@ public class FileManagerTestCase_v3 implements FileManagerInterface{
 
 	@Override
 	public void testFile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testGeneralSettings() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testSearchOptions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testStorageOptions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void testEditorOptions() {
 		// TODO Auto-generated method stub
 		
 	}

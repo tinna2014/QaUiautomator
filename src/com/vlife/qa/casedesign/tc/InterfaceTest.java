@@ -3,7 +3,7 @@ package com.vlife.qa.casedesign.tc;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.vlife.qa.i.FileManagerInterface;
 
-public class test extends UiAutomatorTestCase implements FileManagerInterface  {
+public class InterfaceTest extends UiAutomatorTestCase implements FileManagerInterface  {
 
 	@Override
 	public void testNewFolder() {

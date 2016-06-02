@@ -15,7 +15,7 @@ import android.os.RemoteException;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
-import com.vlife.qa.logcat.Logcat2DeviceThread;
+import com.vlife.qa.logcat.DumpMem2DeviceThread;
 import com.vlife.qa.util.UiAutomatorUtil;
 
 public class MemoryLeak extends UiAutomatorTestCase {
@@ -76,7 +76,7 @@ public class MemoryLeak extends UiAutomatorTestCase {
 	    	testUnlock();
 			UiDevice.getInstance().takeScreenshot(new File("/sdcard/snap"+i+".png"));
 			sleep(2000);
-			new Thread(new Logcat2DeviceThread()).start();
+			new Thread(new DumpMem2DeviceThread()).start();
 
 	    }
 	    return;

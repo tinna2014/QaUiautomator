@@ -17,7 +17,7 @@ public class LogcatCase extends UiAutomatorTestCase{
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		new Thread(new Logcat2DeviceThread()).start();
+		new Thread(new DumpMem2DeviceThread()).start();
 		
 	}
 	@Override

@@ -8,19 +8,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-public class Logcat2DeviceThread implements Runnable{
+public class DumpMem2DeviceThread implements Runnable{
 	public BufferedWriter bW=null;
 	private String pathDir="/mnt/sdcard/testtest";
 	private String path="";
 	@Override
 	public void run() {
-		path=pathDir+File.separator+"logcat.txt";
+		path=pathDir+File.separator+"meminfo2.txt";
 		try {
 			Runtime.getRuntime().exec("logcat -c");
 			Runtime.getRuntime().exec("mkdir "+pathDir);
 			Runtime.getRuntime().exec("touch "+path);
 			
-			Process process=Runtime.getRuntime().exec("logcat -v time");
+			Process process=Runtime.getRuntime().exec("dumpsys meminfo");
 			InputStream inputStream=process.getInputStream();
 			InputStreamReader in=new InputStreamReader(inputStream);
 			BufferedReader reader=new BufferedReader(in);
