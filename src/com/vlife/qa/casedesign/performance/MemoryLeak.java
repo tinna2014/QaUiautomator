@@ -16,9 +16,10 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.vlife.qa.logcat.DumpMem2DeviceThread;
+import com.vlife.qa.util.TestCaseResult;
 import com.vlife.qa.util.UiAutomatorUtil;
 
-public class MemoryLeak extends UiAutomatorTestCase {
+public class MemoryLeak extends TestCaseResult {
 	String dumpFile = "/Users/mac/Meminfo2.log";
 	int n = 5;
 	
