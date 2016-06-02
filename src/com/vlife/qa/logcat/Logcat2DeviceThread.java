@@ -21,6 +21,7 @@ public class Logcat2DeviceThread implements Runnable{
 			Runtime.getRuntime().exec("touch "+path);
 			
 			Process process=Runtime.getRuntime().exec("dumpsys meminfo");
+//			Process process2=Runtime.getRuntime().exec("dumpsys meminfo");
 			InputStream inputStream=process.getInputStream();
 			InputStreamReader in=new InputStreamReader(inputStream);
 			BufferedReader reader=new BufferedReader(in);

@@ -20,7 +20,7 @@ import com.vlife.qa.util.UiAutomatorUtil;
 
 public class MemoryLeak extends UiAutomatorTestCase {
 	String dumpFile = "/Users/mac/Meminfo2.log";
-	int n = 3;
+	int n = 5;
 	
 	public static void main(String args[]){
 		String jarName, testClass, testName, androidId;
@@ -35,7 +35,7 @@ public class MemoryLeak extends UiAutomatorTestCase {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		new Thread(new Logcat2DeviceThread()).start();
+//		new Thread(new Logcat2DeviceThread()).start();
 		
 	}
 
@@ -47,11 +47,11 @@ public class MemoryLeak extends UiAutomatorTestCase {
 			UiDevice.getInstance().wakeUp();	
 		}
 		sleep(2000);		
-		UiDevice.getInstance().swipe(150, 1000, 950, 1000, 20);
-		UiDevice.getInstance().swipe(150, 1000, 850, 1000, 20);
+		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
+		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
 		sleep(2000);
 		
-		
+//		
 //		System.out.println("----启动adb调用dumpsys---- ");
 //		String dumpCmd = "/Applications/Android/sdk/platform-tools/adb shell" + " dumpsys meminfo > " + dumpFile;
 //		System.out.println("----dump内存堆栈中...----" + dumpCmd);
@@ -75,7 +75,8 @@ public class MemoryLeak extends UiAutomatorTestCase {
 	    {
 	    	testUnlock();
 			UiDevice.getInstance().takeScreenshot(new File("/sdcard/snap"+i+".png"));
-			sleep(2000);		
+			sleep(2000);
+			new Thread(new Logcat2DeviceThread()).start();
 
 	    }
 	    return;
