@@ -31,7 +31,7 @@ public class MemoryLeak extends TestCaseResult {
 		androidId = "18";
 		
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
-	}
+	} 
 	
 	@Override
 	protected void setUp() throws Exception {
