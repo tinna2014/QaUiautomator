@@ -1,5 +1,6 @@
 package com.vlife.qa.casedesign.tc;
 
+import com.android.uiautomator.core.UiDevice;
 import com.vlife.qa.i.FileManagerInterface;
 import com.vlife.qa.i.FileMangerInterface_v2;
 
@@ -10,7 +11,7 @@ public class FileManagerTestCase_v2 implements FileManagerInterface,FileMangerIn
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
