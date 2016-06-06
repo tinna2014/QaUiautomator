@@ -35,13 +35,12 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(8));
+		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
+		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(0));
 		if (!panel.exists()){
 			UiAutomatorBase.ClickCenter();
-		}		sleep(1000);
-		
-		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(0));
-		Dailer.click();
+		}		sleep(1000);	
+		Dailer.clickAndWaitForNewWindow();
 		sleep(2000);
 
 	}
@@ -53,17 +52,17 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(8));
+		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
+		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
 		if (!panel.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
+		sleep(1000);		
+		for(int i = 0; i<20; i++)
+		Next.click();
 		sleep(1000);
-		
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
-		Next.click();
-		Next.click();
-		Next.click();
-		sleep(2000);
+		UiAutomatorBase.ClickCenter();
+		sleep(1000);
 		
 	}
 	
@@ -74,13 +73,12 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(8));
+		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
+		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").index(2));
 		if (!panel.exists()){
 			UiAutomatorBase.ClickCenter();
 		}	
-		sleep(1000);
-		
-		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").index(2));
+		sleep(1000);	
 		Setting.click();
 		sleep(2000);
 
@@ -93,13 +91,12 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(8));
+		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
+		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").index(3));
 		if (!panel.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
 		sleep(1000);
-		
-		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").index(3));
 		Camera.click();
 		sleep(2000);
 

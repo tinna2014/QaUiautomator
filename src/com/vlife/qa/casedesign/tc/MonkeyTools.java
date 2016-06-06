@@ -21,7 +21,10 @@ public class MonkeyTools extends UiAutomatorTestCase {
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
-		}		
+		}
+		UiDevice.getInstance().wakeUp();
+		sleep(2000);
+
 	}
 	
 	public void testWakeup() throws RemoteException{
@@ -31,7 +34,8 @@ public class MonkeyTools extends UiAutomatorTestCase {
 			if(!UiDevice.getInstance().isScreenOn()){
 				UiDevice.getInstance().wakeUp();
 			}
-			sleep(1000);
+			UiDevice.getInstance().wakeUp();
+			sleep(2000);
 		}
 	}
 	
@@ -51,5 +55,7 @@ public class MonkeyTools extends UiAutomatorTestCase {
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}
+	
+	
 
 }

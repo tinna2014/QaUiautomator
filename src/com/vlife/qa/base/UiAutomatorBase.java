@@ -13,7 +13,7 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class UiAutomatorBase extends UiAutomatorTestCase{
 	
-	public void launchApp(String application) throws UiObjectNotFoundException{
+	public static void launchApp(String application) throws UiObjectNotFoundException{
 		
 		UiDevice.getInstance().pressHome();
 	    UiObject allAppsButton = new UiObject(new UiSelector().description("Apps"));
