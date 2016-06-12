@@ -7,6 +7,7 @@ import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+import com.vlife.qa.base.AssertTrue2Apps;
 import com.vlife.qa.base.UiAutomatorBase;
 import com.vlife.qa.util.TestCaseResult;
 import com.vlife.qa.util.UiAutomatorUtil;
@@ -24,85 +25,98 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 	3、亮灭屏-打开panel-点击设置。
 	4、亮灭屏-打开panel-点击相机。
 	5、亮灭屏-点击“查看更多”。
-
-
-
 	 */
-	public void testDail() throws RemoteException, UiObjectNotFoundException{
+	
+	
+	public void test1Dail() throws RemoteException, UiObjectNotFoundException{
+		System.out.println("==================测试Dailer");
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
 		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(0));
-		if (!panel.exists()){
-			UiAutomatorBase.ClickCenter();
-		}		sleep(1000);	
+		if (!Dailer.exists()){
+			UiAutomatorBase.ClickCenter();		
+		}
 		Dailer.clickAndWaitForNewWindow();
 		sleep(2000);
 
 	}
 	
-	public void testNext() throws RemoteException, UiObjectNotFoundException{
+	public void test2Next() throws RemoteException, UiObjectNotFoundException{
+		System.out.println("==================测试下一张");
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
-		if (!panel.exists()){
+		System.out.println("==================唤醒屏幕了");
+
+		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(1));
+
+		if (!Next.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
+		System.out.println("==================next存在性"+Next.exists());
+
 		sleep(1000);		
 		for(int i = 0; i<20; i++)
-		Next.click();
+		{
+			Next.click();
+
+		}
+		
 		sleep(1000);
 		UiAutomatorBase.ClickCenter();
-		sleep(1000);
+		sleep(1000);		
 		
 	}
 	
-	public void testSetting() throws RemoteException, UiObjectNotFoundException{
+	public void test3Setting() throws RemoteException, UiObjectNotFoundException{
+		System.out.println("==================测试进入Settings");
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
-		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").index(2));
-		if (!panel.exists()){
+		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").instance(2));		
+
+		if (!Setting.exists()){
 			UiAutomatorBase.ClickCenter();
+			UiAutomatorBase.ClickCenter();
+
 		}	
 		sleep(1000);	
-		Setting.click();
+		Setting.clickAndWaitForNewWindow();
 		sleep(2000);
 
 	}
 	
-	public void testCamera() throws RemoteException, UiObjectNotFoundException{
+	public void test4Camera() throws RemoteException, UiObjectNotFoundException{
+		System.out.println("==================测试进入Camera");
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject panel = new UiObject(new UiSelector().resourceId("android.widget.LinearLayout").index(4));
-		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").index(3));
-		if (!panel.exists()){
+		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").instance(3));
+		if (!Camera.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
 		sleep(1000);
-		Camera.click();
+		Camera.clickAndWaitForNewWindow();
+		AssertTrue2Apps.OpenCamera();
 		sleep(2000);
 
 	}
 	
-	public void testCheckMore() throws RemoteException, UiObjectNotFoundException{
+	public void test5CheckMore() throws RemoteException, UiObjectNotFoundException{
+		System.out.println("==================测试“查看更多”链接跳转");
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
@@ -111,9 +125,10 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		sleep(2000);
 		UiObject MoreButton = new UiObject(new UiSelector().text("查看更多"));
 		if (MoreButton.exists()){
-			MoreButton.click();
+			MoreButton.clickAndWaitForNewWindow();
 		}
-		sleep(1000);
+		
+		sleep(2000);
 
 	}
 	
@@ -121,7 +136,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		String jarName, testClass, testName, androidId;
 		jarName = "ButtonOnPanel";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockButtonOnPanelTestCase";
-		testName = "";
+		testName = "test4Camera";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}

@@ -13,6 +13,9 @@ import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class UiAutomatorBase extends UiAutomatorTestCase{
 	
+	/**
+	 * 黑盒方式启动应用-启动器中选择
+	 */
 	public static void launchApp(String application) throws UiObjectNotFoundException{
 		
 		UiDevice.getInstance().pressHome();
@@ -35,41 +38,25 @@ public class UiAutomatorBase extends UiAutomatorTestCase{
 		appToBeLaunched.clickAndWaitForNewWindow();		
 	}
 	
-	   public static void ClickCenter() throws UiObjectNotFoundException{
-		   int h=UiDevice.getInstance().getDisplayHeight();
-		   int w=UiDevice.getInstance().getDisplayWidth();
-		   UiDevice.getInstance().click(w/2, h/2);
-	   }
-	
-	public void trace(String message){
-		
-		System.out.println("### " + message + " ###");
+	/**
+	 * 点击屏幕正中
+	 */
+	public static void ClickCenter() throws UiObjectNotFoundException{
+		int h=UiDevice.getInstance().getDisplayHeight();
+		int w=UiDevice.getInstance().getDisplayWidth();
+		UiDevice.getInstance().click(w/2, h/2);
 	}
 	
-	public void assertViewTrue(String... descriptions) throws UiObjectNotFoundException{
-		
-		for(String description: descriptions){
-			trace("Check if View with description: " + description + " is available?");
-			UiObject view = new UiObject(new UiSelector().className(View.class.getName()).description(description));
-			assertTrue("View with description: " + description + " is not available", view.exists());
-		}
+	/**
+	 * 海外杂志锁屏通用解锁
+	 */
+	public static void MagaUnlock() throws UiObjectNotFoundException{
+		int h=UiDevice.getInstance().getDisplayHeight();
+		int w=UiDevice.getInstance().getDisplayWidth();
+		UiDevice.getInstance().swipe(w/2, h/4*3,w/2,h/4,15);
+		UiDevice.getInstance().swipe(w/2, h/4*3,w/2,h/4,15);
+
 	}
 	
-	protected void assertTextViewTrue(String... texts) throws UiObjectNotFoundException{
-		
-		for(String text: texts){
-			trace("Check if TextView with text: " + text + " is available?");
-			UiObject textView = new UiObject(new UiSelector().className(TextView.class.getName()).text(text));
-			assertTrue("TextView with text: " + text + " is not available", textView.exists());
-		}
-	}
-	
-	protected void assertImageButtonTrue(String... descriptions) throws UiObjectNotFoundException{
-		
-		for(String description: descriptions){
-			trace("Check if ImageButton with description: " + description + " is available?");
-			UiObject view = new UiObject(new UiSelector().className(ImageButton.class.getName()).description(description));
-			assertTrue("ImageButton with description: " + description + " is not available", view.exists());
-		}
-	}
+
 }

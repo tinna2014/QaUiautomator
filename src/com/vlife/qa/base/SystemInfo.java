@@ -27,7 +27,7 @@ public class SystemInfo extends UiAutomatorTestCase {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new UiAutomatorUtil("Demo", "com.vlife.qa.uiautomator.base.SystemInfo", "testGetProp", "1");
+		new UiAutomatorUtil("Demo", "com.vlife.qa.base.SystemInfo", "testBuild", "18");
 	
 	}
 	
@@ -35,10 +35,10 @@ public class SystemInfo extends UiAutomatorTestCase {
 		//BUILD
 		System.out.println("BUILD:"+Build.BOARD);
 		System.out.println("BUILD:"+Build.BOOTLOADER);
-		System.out.println("BUILD:"+Build.BRAND);
+		System.out.println("BUILD-Brnd:"+Build.BRAND);
 		System.out.println("BUILD:"+Build.CPU_ABI);
 		System.out.println("BUILD:"+Build.CPU_ABI2);
-		System.out.println("BUILD:"+Build.DEVICE);
+		System.out.println("BUILD-Device:"+Build.DEVICE);
 		System.out.println("BUILD:"+Build.DISPLAY);
 		System.out.println("BUILD:"+Build.FINGERPRINT);
 		System.out.println("BUILD:"+Build.HARDWARE);
