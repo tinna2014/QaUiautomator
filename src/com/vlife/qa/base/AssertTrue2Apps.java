@@ -57,13 +57,13 @@ public class AssertTrue2Apps extends UiAutomatorTestCase {
 	
 	public static boolean OpenCamera(){
 		if(Build.BRAND.contains("vivo")){
-			assertEquals("JumpToCamera", "com.android.contacts", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
 			
 		} else if (Build.BRAND.contains("ZTE")){
-			assertEquals("JumpToCamera", "com.android.contacts", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
 			
 		} else{
-			assertEquals("JumpToCamera", "com.android.contacts", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
 		
 		}
 		return false;

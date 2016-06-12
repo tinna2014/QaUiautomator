@@ -5,6 +5,7 @@ import android.os.RemoteException;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
+import com.android.uiautomator.core.UiScrollable;
 import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 import com.vlife.qa.base.AssertTrue2Apps;
@@ -36,11 +37,12 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(0));
+		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
 		if (!Dailer.exists()){
 			UiAutomatorBase.ClickCenter();		
 		}
 		Dailer.clickAndWaitForNewWindow();
+		AssertTrue2Apps.OpenDialer();
 		sleep(2000);
 
 	}
@@ -53,20 +55,18 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		System.out.println("==================唤醒屏幕了");
+		System.out.println("==================唤醒屏幕ed");
 
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(1));
+		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(2));
 
 		if (!Next.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
 		System.out.println("==================next存在性"+Next.exists());
-
 		sleep(1000);		
 		for(int i = 0; i<20; i++)
 		{
 			Next.click();
-
 		}
 		
 		sleep(1000);
@@ -83,7 +83,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").instance(2));		
+		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").instance(3));		
 
 		if (!Setting.exists()){
 			UiAutomatorBase.ClickCenter();
@@ -93,6 +93,9 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		sleep(1000);	
 		Setting.clickAndWaitForNewWindow();
 		sleep(2000);
+		UiScrollable Settings = new UiScrollable(new UiSelector().className("android.widget.ScrollView"));
+		boolean findlast = Settings.scrollIntoView(new UiSelector().text("VLife lockscreen"));
+		assertTrue(findlast);
 
 	}
 	
@@ -104,7 +107,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").instance(3));
+		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").instance(4));
 		if (!Camera.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
@@ -127,16 +130,15 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		if (MoreButton.exists()){
 			MoreButton.clickAndWaitForNewWindow();
 		}
-		
 		sleep(2000);
-
+		AssertTrue2Apps.OpenBrowser();
 	}
 	
 	public static void main(String args[]){
 		String jarName, testClass, testName, androidId;
 		jarName = "ButtonOnPanel";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockButtonOnPanelTestCase";
-		testName = "test4Camera";
+		testName = "test3Setting";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}
