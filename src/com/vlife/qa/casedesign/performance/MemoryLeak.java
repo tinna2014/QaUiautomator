@@ -14,7 +14,9 @@ import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
+import com.android.uiautomator.core.UiObjectNotFoundException;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
+import com.vlife.qa.base.UiAutomatorBase;
 import com.vlife.qa.logcat.DumpMem2DeviceThread;
 import com.vlife.qa.util.TestCaseResult;
 import com.vlife.qa.util.UiAutomatorUtil;
@@ -41,15 +43,16 @@ public class MemoryLeak extends TestCaseResult {
 	}
 
 	
-	public void testUnlock() throws RemoteException{
+	public void testUnlock() throws RemoteException, UiObjectNotFoundException{
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();	
 		}
 		sleep(2000);		
-		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
-		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
+//		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
+//		UiDevice.getInstance().swipe(360, 1200, 360, 500, 20);
+		UiAutomatorBase.MagaUnlock();
 		sleep(2000);
 		
 //		
@@ -61,17 +64,8 @@ public class MemoryLeak extends TestCaseResult {
 		
 	}
 	
-	public void tesetUnlock() throws RemoteException{
-		
-		if(!UiDevice.getInstance().isScreenOn()){
-			UiDevice.getInstance().wakeUp();
-		}
-		
-		
-	}
-	
 
-	public void testMemory() throws RemoteException{
+	public void testMemory() throws RemoteException, UiObjectNotFoundException{
 	    for (int i=1; i<=n; i++)
 	    {
 	    	testUnlock();

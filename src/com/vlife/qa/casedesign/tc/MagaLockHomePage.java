@@ -56,7 +56,7 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		sleep(2000);
 		UiAutomatorBase.MagaUnlock();
 		UiObject LockSettings = Settings.getChildByText(new UiSelector().className("android.widget.TextView"),"VLife lockscreen");
-		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").index(0));
+		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").instance(0));
 		if (!button.isChecked()){
 			button.click();
 		}
@@ -80,12 +80,12 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		sleep(2000);
 		UiAutomatorBase.MagaUnlock();
 		UiObject AutoPlay = Settings.getChildByText(new UiSelector().className("android.widget.TextView"), "Auto play");
-		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").index(1));
+		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").instance(1));
 		if(button.isChecked()){
 			sleep(2000);
 			button.click();
 		}
-		
+		sleep(2000);
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
@@ -103,8 +103,10 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		{
 			Next.click();
 			sleep(2000);
-			UiObject TextName = new UiObject(new UiSelector().className("android.widget.TextView").instance(4));
-			WallpaperName[i] = TextName.getText();
+			UiObject TextName = new UiObject(new UiSelector().resourceIdMatches(".*magazine_title_text_view_id"));
+			if(TextName.exists()){
+				WallpaperName[i] = TextName.getText();
+			}
 		}		
 		sleep(1000);
 		UiAutomatorBase.ClickCenter();
@@ -133,12 +135,11 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		sleep(2000);
 		UiAutomatorBase.MagaUnlock();
 		UiObject AutoPlay = Settings.getChildByText(new UiSelector().className("android.widget.TextView"), "Auto play");
-		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").index(1));
+		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").instance(1));
 		if(!button.isChecked()){
 			sleep(2000);
 			button.click();
 		}		
-		MagaLockButtonOnPanelTestCase.test2Next();
 		
 	}
 	
@@ -177,7 +178,7 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		String jarName, testClass, testName, androidId;
 		jarName = "MagazineHomePage";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockHomePage";
-		testName = "";
+		testName = "test3AutoPlayOff";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}

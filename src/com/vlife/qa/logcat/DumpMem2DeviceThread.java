@@ -20,7 +20,7 @@ public class DumpMem2DeviceThread implements Runnable{
 			Runtime.getRuntime().exec("mkdir "+pathDir);
 			Runtime.getRuntime().exec("touch "+path);
 			
-			Process process=Runtime.getRuntime().exec("dumpsys meminfo");
+			Process process=Runtime.getRuntime().exec("dumpsys meminfo com.vlife.stage:lock");
 			InputStream inputStream=process.getInputStream();
 			InputStreamReader in=new InputStreamReader(inputStream);
 			BufferedReader reader=new BufferedReader(in);

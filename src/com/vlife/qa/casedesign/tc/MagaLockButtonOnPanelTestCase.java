@@ -2,6 +2,7 @@ package com.vlife.qa.casedesign.tc;
 
 import java.util.Arrays;
 
+import android.content.res.Configuration;
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiDevice;
@@ -39,7 +40,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Dailer = new UiObject(new UiSelector().className("android.widget.ImageView").index(1));
+		UiObject Dailer = new UiObject(new UiSelector().resourceIdMatches(".*magazine_panel_menu_mic_id"));
 		if (!Dailer.exists()){
 			UiAutomatorBase.ClickCenter();		
 		}
@@ -49,33 +50,36 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 
 	}
 	
-	public static void test2Next() throws RemoteException, UiObjectNotFoundException{
+	public void test2Next() throws RemoteException, UiObjectNotFoundException{
 		
 		String[] WallpaperName = new String[10];
 		System.out.println("==================测试下一张");
 		UiDevice.getInstance().sleep();
-//		sleep(2000);
+		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
-//		sleep(2000);
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(1));
+		sleep(2000);
+		UiObject Next = new UiObject(new UiSelector().resourceIdMatches(".*magazine_panel_menu_next_id"));
 
 		if (!Next.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
 		System.out.println("==================next存在性"+Next.exists());
-//		sleep(1000);		
+		sleep(1000);		
 		for(int i = 0; i<10; i++)
 		{
 			Next.click();
-//			sleep(2000);
-			UiObject TextName = new UiObject(new UiSelector().className("android.widget.TextView").instance(4));
-			WallpaperName[i] = TextName.getText();
+			sleep(2000);
+			UiObject TextName = new UiObject(new UiSelector().resourceIdMatches(".*magazine_title_text_view_id"));
+			if(TextName.exists()){
+				WallpaperName[i] = TextName.getText();
+			}
+			
 		}		
-//		sleep(1000);
+		sleep(1000);
 		UiAutomatorBase.ClickCenter();
-//		sleep(1000);		
+		sleep(1000);		
 		System.out.println(Arrays.asList(WallpaperName));
 		boolean allsame = true;
 		for(int i = 1; i < WallpaperName.length; ++i)
@@ -98,7 +102,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Setting = new UiObject(new UiSelector().className("android.widget.ImageView").instance(3));		
+		UiObject Setting = new UiObject(new UiSelector().resourceIdMatches(".*magazine_panel_menu_settings_id"));		
 
 		if (!Setting.exists()){
 			UiAutomatorBase.ClickCenter();
@@ -122,7 +126,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Camera = new UiObject(new UiSelector().className("android.widget.ImageView").instance(4));
+		UiObject Camera = new UiObject(new UiSelector().resourceIdMatches(".*magazine_panel_menu_camera_id"));
 		if (!Camera.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
@@ -141,7 +145,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject MoreButton = new UiObject(new UiSelector().text("查看更多"));
+		UiObject MoreButton = new UiObject(new UiSelector().textMatches("查看更多|Check more"));
 		if (MoreButton.exists()){
 			MoreButton.clickAndWaitForNewWindow();
 		}
@@ -153,7 +157,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		String jarName, testClass, testName, androidId;
 		jarName = "ButtonOnPanel";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockButtonOnPanelTestCase";
-		testName = "test2Next";
+		testName = "";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}

@@ -6,64 +6,70 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class AssertTrue2Apps extends UiAutomatorTestCase {
-
-	static String BrowserPackageName=UiDevice.getInstance().getCurrentPackageName();
-	static String SettingPackageName=UiDevice.getInstance().getCurrentPackageName();
-	static String DialerPackageName=UiDevice.getInstance().getCurrentPackageName();
-	static String CameraPackageName=UiDevice.getInstance().getCurrentPackageName();
-
 	
 	public static boolean OpenBrowser(){
+		
+		String PackageName=UiDevice.getInstance().getCurrentPackageName();
+
 		if(Build.BRAND.contains("vivo")){
-			assertEquals("JumpToBrowser", "com.vivo.browser", BrowserPackageName);
+			assertEquals("JumpToBrowser", "com.vivo.browser", PackageName);
 			
 		} else if (Build.BRAND.contains("ZTE")){
-			assertEquals("JumpToBrowser", "com.android.browser", BrowserPackageName);
+			assertEquals("JumpToBrowser", "com.android.browser", PackageName);
 			
 		} else{
-			assertEquals("JumpToBrowser", "com.android.browser", BrowserPackageName);
+			assertEquals("JumpToBrowser", "com.android.browser", PackageName);
 		
 		}		
 		return false;
 	}
 	
 	public static boolean OpenSettings(){
+		
+		String PackageName=UiDevice.getInstance().getCurrentPackageName();
+		
 		if(Build.BRAND.contains("vivo")){
-			assertEquals("JumpToSettingss", "com.android.settings", SettingPackageName);
+			assertEquals("JumpToSettingss", "com.android.settings", PackageName);
 			
 		} else if (Build.BRAND.contains("ZTE")){
-			assertEquals("JumpToSettingss", "com.android.settings", SettingPackageName);
+			assertEquals("JumpToSettingss", "com.android.settings", PackageName);
 			
 		} else{
-			assertEquals("JumpToSettingss", "com.android.settings", SettingPackageName);
+			assertEquals("JumpToSettingss", "com.android.settings", PackageName);
 		
 		}
 		return false;
 	}
 	
 	public static boolean OpenDialer(){
+		
+		String PackageName=UiDevice.getInstance().getCurrentPackageName();
+
 		if(Build.BRAND.contains("vivo")){
-			assertEquals("JumpToDialer", "com.android.dialer", DialerPackageName);
+			assertEquals("JumpToDialer", "com.android.dialer", PackageName);
 			
 		} else if (Build.BRAND.contains("ZTE")){
-			assertEquals("JumpToDialer", "com.android.contacts", DialerPackageName);
+			assertEquals("JumpToDialer", "com.android.contacts", PackageName);
 			
 		} else{
-			assertEquals("JumpToDialer", "com.android.dialer", DialerPackageName);
+			assertEquals("JumpToDialer", "com.android.dialer", PackageName);
 		
 		}
 		return false;
 	}
 	
 	public static boolean OpenCamera(){
+		
+		String PackageName=UiDevice.getInstance().getCurrentPackageName();
+		
 		if(Build.BRAND.contains("vivo")){
-			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", PackageName);
 			
 		} else if (Build.BRAND.contains("ZTE")){
-			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", PackageName);
 			
 		} else{
-			assertEquals("JumpToCamera", "com.android.camera", CameraPackageName);
+			assertEquals("JumpToCamera", "com.android.camera", PackageName);
 		
 		}
 		return false;
