@@ -4,12 +4,11 @@ import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class ResumeHome extends UiAutomatorTestCase {
-	public void home ()
+	public static void home ()
 	{
 		UiDevice.getInstance().pressBack();
 		UiDevice.getInstance().pressBack();
 		UiDevice.getInstance().pressBack();
-		sleep(200);
 		UiDevice.getInstance().pressHome();
 		
 	}

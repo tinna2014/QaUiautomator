@@ -34,7 +34,7 @@ public class UiAutomatorBase extends UiAutomatorTestCase{
 	    //设置滑动方向为 horizontal (默认是vertical)
 		appViews.setAsHorizontalList();
 		//找到要打开的App
-		UiObject appToBeLaunched = appViews.getChildByText(new UiSelector().className(android.widget.TextView.class.getName()), application);
+		UiObject appToBeLaunched = appViews.getChildByText(new UiSelector().className(android.widget.TextView.class.getName()), application,true);
 		appToBeLaunched.clickAndWaitForNewWindow();		
 	}
 	

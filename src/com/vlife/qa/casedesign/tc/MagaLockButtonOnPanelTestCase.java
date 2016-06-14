@@ -1,5 +1,7 @@
 package com.vlife.qa.casedesign.tc;
 
+import java.util.Arrays;
+
 import android.os.RemoteException;
 
 import com.android.uiautomator.core.UiDevice;
@@ -47,32 +49,45 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 
 	}
 	
-	public void test2Next() throws RemoteException, UiObjectNotFoundException{
+	public static void test2Next() throws RemoteException, UiObjectNotFoundException{
+		
+		String[] WallpaperName = new String[10];
 		System.out.println("==================测试下一张");
 		UiDevice.getInstance().sleep();
-		sleep(2000);
+//		sleep(2000);
 		if(!UiDevice.getInstance().isScreenOn()){
 			UiDevice.getInstance().wakeUp();
 		}
-		sleep(2000);
-		System.out.println("==================唤醒屏幕ed");
-
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(2));
+//		sleep(2000);
+		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(1));
 
 		if (!Next.exists()){
 			UiAutomatorBase.ClickCenter();
 		}
 		System.out.println("==================next存在性"+Next.exists());
-		sleep(1000);		
-		for(int i = 0; i<20; i++)
+//		sleep(1000);		
+		for(int i = 0; i<10; i++)
 		{
 			Next.click();
-		}
-		
-		sleep(1000);
+//			sleep(2000);
+			UiObject TextName = new UiObject(new UiSelector().className("android.widget.TextView").instance(4));
+			WallpaperName[i] = TextName.getText();
+		}		
+//		sleep(1000);
 		UiAutomatorBase.ClickCenter();
-		sleep(1000);		
-		
+//		sleep(1000);		
+		System.out.println(Arrays.asList(WallpaperName));
+		boolean allsame = true;
+		for(int i = 1; i < WallpaperName.length; ++i)
+		{
+			if(WallpaperName[0] != WallpaperName[i])
+			{
+				allsame = false;
+				break;
+			}
+		}
+		System.out.println(Arrays.asList(allsame));
+		assertTrue(!allsame);
 	}
 	
 	public void test3Setting() throws RemoteException, UiObjectNotFoundException{
@@ -138,7 +153,7 @@ public class MagaLockButtonOnPanelTestCase extends TestCaseResult {
 		String jarName, testClass, testName, androidId;
 		jarName = "ButtonOnPanel";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockButtonOnPanelTestCase";
-		testName = "test3Setting";
+		testName = "test2Next";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}
