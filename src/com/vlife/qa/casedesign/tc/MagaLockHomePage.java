@@ -2,8 +2,10 @@ package com.vlife.qa.casedesign.tc;
 
 import java.util.Arrays;
 
+import android.os.Build;
 import android.os.RemoteException;
 
+import com.android.uiautomator.core.Configurator;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -54,7 +56,11 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		sleep(2000);
 		UiDevice.getInstance().wakeUp();
 		sleep(2000);
-		UiAutomatorBase.MagaUnlock();
+		if(Build.BRAND.contains("HUAWEI")){
+			UiAutomatorBase.HuaweiMagaUnlock();
+		}else {
+			UiAutomatorBase.MagaUnlock();
+		}
 		UiObject LockSettings = Settings.getChildByText(new UiSelector().className("android.widget.TextView"),"VLife lockscreen");
 		UiObject button = new UiObject(new UiSelector().className("android.widget.CompoundButton").instance(0));
 		if (!button.isChecked()){
@@ -73,7 +79,7 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 	
 	public void test3AutoPlayOff() throws UiObjectNotFoundException, RemoteException{
 
-		String[] WallpaperName = new String[10];
+		String[] WallpaperName = new String[4];
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		UiDevice.getInstance().wakeUp();
@@ -92,43 +98,39 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 			UiDevice.getInstance().wakeUp();
 		}
 		sleep(2000);
-		UiObject Next = new UiObject(new UiSelector().className("android.widget.ImageView").instance(1));
-
-		if (!Next.exists()){
-			UiAutomatorBase.ClickCenter();
-		}
-		System.out.println("==================next存在性"+Next.exists());
-		sleep(1000);		
-		for(int i = 0; i<10; i++)
+		
+		for(int i = 0; i<4; i++)
 		{
-			Next.click();
+			UiDevice.getInstance().wakeUp();
 			sleep(2000);
 			UiObject TextName = new UiObject(new UiSelector().resourceIdMatches(".*magazine_title_text_view_id"));
 			if(TextName.exists()){
 				WallpaperName[i] = TextName.getText();
 			}
-		}		
-		sleep(1000);
-		UiAutomatorBase.ClickCenter();
-		sleep(1000);		
+			sleep(2000);
+			UiDevice.getInstance().sleep();
+			sleep(2000);
+
+		}
+			
 		System.out.println(Arrays.asList(WallpaperName));
 		boolean allsame = true;
 		for(int i = 1; i < WallpaperName.length; ++i)
 		{
-			if(WallpaperName[0] != WallpaperName[i])
+			if(!WallpaperName[0].equals(WallpaperName[i]))
 			{
 				allsame = false;
 				break;
 			}
 		}
-		System.out.println(Arrays.asList(allsame));
+		System.out.println(allsame);
 		assertTrue(allsame);
 		
 	}
 	
 	public void test4AutoPlayOn() throws UiObjectNotFoundException, RemoteException{
 
-		String[] WallpaperName = new String[10];
+		String[] WallpaperName = new String[4];
 		UiDevice.getInstance().sleep();
 		sleep(2000);
 		UiDevice.getInstance().wakeUp();
@@ -139,7 +141,49 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 		if(!button.isChecked()){
 			sleep(2000);
 			button.click();
-		}		
+		}
+		sleep(2000);
+		UiDevice.getInstance().sleep();
+		sleep(2000);
+		if(!UiDevice.getInstance().isScreenOn()){
+			UiDevice.getInstance().wakeUp();
+		}
+		sleep(2000);
+		
+		for(int i = 0; i<4; i++)
+		{
+			UiDevice.getInstance().wakeUp();
+			sleep(2000);
+			UiObject TextName = new UiObject(new UiSelector().resourceIdMatches(".*magazine_title_text_view_id"));
+			if(TextName.exists()){
+				WallpaperName[i] = TextName.getText();
+			}
+			sleep(2000);
+			UiDevice.getInstance().sleep();
+			sleep(2000);
+
+		}
+			
+		System.out.println(Arrays.asList(WallpaperName));
+		boolean allsame = true;
+		for(int i = 1; i < WallpaperName.length; ++i)
+		{
+			if(!WallpaperName[0].equals(WallpaperName[i]))
+			{
+				allsame = false;
+				break;
+			}
+		}
+		System.out.println(allsame);
+		assertTrue(!allsame);
+		sleep(1000);
+		UiDevice.getInstance().sleep();
+		sleep(2000);
+		if(!UiDevice.getInstance().isScreenOn()){
+			UiDevice.getInstance().wakeUp();
+		}
+		sleep(2000);
+		UiAutomatorBase.MagaUnlock();
 		
 	}
 	
@@ -162,23 +206,27 @@ public class MagaLockHomePage extends UiAutomatorTestCase {
 	
 	public void test7CloseSysLock() throws UiObjectNotFoundException{
 		UiObject CloseSysLock = Settings.getChildByText(new UiSelector().className("android.widget.TextView"),"Close system lockscreen");
-		CloseSysLock.click();
+		CloseSysLock.clickAndWaitForNewWindow();
+		sleep(1000);
+		UiDevice.getInstance().pressBack();
 	}
 	
 	public void test8RemoveDoubleLock() throws UiObjectNotFoundException{
 		UiObject Remove = Settings.getChildByText(new UiSelector().className("android.widget.TextView"),"Remove double lockscreen");
-		Remove.click();
+		Remove.clickAndWaitForNewWindow();
+		sleep(3000);
+		UiDevice.getInstance().pressBack();
 	}
 	
 	public void test9EMUnlock() throws UiObjectNotFoundException{
-		Settings.getChildByText(new UiSelector().className("android.widget.TextVie"), "Emergency Unlock").click();
+		Settings.getChildByText(new UiSelector().className("android.widget.TextView"), "Emergency Unlock").click();
 	}
 	
 	public static void main(String args[]){
 		String jarName, testClass, testName, androidId;
 		jarName = "MagazineHomePage";
 		testClass = "com.vlife.qa.casedesign.tc.MagaLockHomePage";
-		testName = "test3AutoPlayOff";
+		testName = "";
 		androidId = "18";
 		new UiAutomatorUtil(jarName, testClass, testName, androidId);
 	}

@@ -51,8 +51,11 @@ public class AssertTrue2Apps extends UiAutomatorTestCase {
 		} else if (Build.BRAND.contains("ZTE")){
 			assertEquals("JumpToDialer", "com.android.contacts", PackageName);
 			
+		} else if (Build.BRAND.contains("HUAWEI")){
+			assertEquals("JumpToDialer", "com.android.contacts", PackageName);
+		
 		} else{
-			assertEquals("JumpToDialer", "com.android.dialer", PackageName);
+			assertEquals("JumpToDialer", "com.android.contacts", PackageName);
 		
 		}
 		return false;
@@ -68,6 +71,9 @@ public class AssertTrue2Apps extends UiAutomatorTestCase {
 		} else if (Build.BRAND.contains("ZTE")){
 			assertEquals("JumpToCamera", "com.android.camera", PackageName);
 			
+		} else if (Build.BRAND.contains("HUAWEI")){
+			assertEquals("JumpToDialer", "com.huawei.camera", PackageName);
+		
 		} else{
 			assertEquals("JumpToCamera", "com.android.camera", PackageName);
 		

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.android.uiautomator.core.Configurator;
 import com.android.uiautomator.core.UiDevice;
 import com.android.uiautomator.core.UiObject;
 import com.android.uiautomator.core.UiObjectNotFoundException;
@@ -34,8 +35,12 @@ public class UiAutomatorBase extends UiAutomatorTestCase{
 	    //设置滑动方向为 horizontal (默认是vertical)
 		appViews.setAsHorizontalList();
 		//找到要打开的App
+		
+		Configurator.getInstance().setScrollAcknowledgmentTimeout(2000l);
 		UiObject appToBeLaunched = appViews.getChildByText(new UiSelector().className(android.widget.TextView.class.getName()), application,true);
-		appToBeLaunched.clickAndWaitForNewWindow();		
+		appToBeLaunched.clickAndWaitForNewWindow();
+		Configurator.getInstance().setScrollAcknowledgmentTimeout(200l);
+		
 	}
 	
 	/**
@@ -55,6 +60,17 @@ public class UiAutomatorBase extends UiAutomatorTestCase{
 		int w=UiDevice.getInstance().getDisplayWidth();
 		UiDevice.getInstance().swipe(w/2, h/4*3,w/2,h/4,15);
 		UiDevice.getInstance().swipe(w/2, h/4*3,w/2,h/4,15);
+
+	}
+	
+	/**
+	 * 华为杂志锁屏通用解锁
+	 */
+	public static void HuaweiMagaUnlock() throws UiObjectNotFoundException{
+		int h=UiDevice.getInstance().getDisplayHeight();
+		int w=UiDevice.getInstance().getDisplayWidth();
+		UiDevice.getInstance().swipe(w/4, h/2,w/4*3,h/2,15);
+		UiDevice.getInstance().swipe(w/4, h/2,w/4*3,h/2,15);
 
 	}
 	

@@ -16,7 +16,6 @@ public class AssertTestNewFile extends TestCaseResult{
 	 */
 	public static void main(String[] args) {
 		new UiAutomatorUtil("AssertFile", "com.vlife.qa.base.AssertTestNewFile", "testNewFile", "18");
-
 	}
 	
 	@Override
@@ -68,6 +67,7 @@ public class AssertTestNewFile extends TestCaseResult{
 		UiDevice.getInstance().pressBack();
 		UiDevice.getInstance().pressHome();
 	}
+	
 	
 
 }

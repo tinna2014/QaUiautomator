@@ -20,7 +20,7 @@ import java.io.OutputStreamWriter;
  *
  */
 
-public class UiAutomatorUtil {
+public class UiAutomatorUtil{
 
 	// 以下参数需要配置，用例集id，用例id，安卓SDK版本id
 	public static String android_id = "3";

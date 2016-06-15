@@ -20,31 +20,40 @@ public class TestUiSelector extends UiAutomatorTestCase {
 		String jarName, testClass, testName, androidId;
 		jarName="Demo";
 		testClass="com.vlife.qa.tutorial.TestUiSelector";
-		testName="testId";
-		androidId="1";
+		testName="testDemo";
+		androidId="19";
 	new UiAutomatorUtil(jarName, testClass, testName, androidId);
 
 	}
 	
 	public void testDemo() throws UiObjectNotFoundException{
 		//找到对象---点击对象
-		UiSelector l=new UiSelector().text("联系人");
+		UiSelector l=new UiSelector().text("通讯录");
 		UiObject object=new UiObject(l);
 		object.click();
 		
 	}
 	public void testMatches() throws UiObjectNotFoundException{
-		//联系人
-		//完全匹配：联系人
-		//包含匹配：系人
-		//正则匹配：.*系.*
-		//起始匹配：联系
+		//通讯录
+		//完全匹配：通讯录
+		//包含匹配：讯录
+		//正则匹配：.*讯.*
+		//起始匹配：通讯
 		
-		//UiSelector l=new UiSelector().textContains("系人");
-		//UiSelector l=new UiSelector().textMatches(".*系.*");
-		UiSelector l=new UiSelector().textStartsWith("联系");
+		//UiSelector l=new UiSelector().textContains("讯录");
+		  UiSelector l=new UiSelector().textMatches(".*讯.*");
+//		UiSelector l=new UiSelector().textStartsWith("通讯");
 		UiObject object=new UiObject(l);
 		object.click();		
+		
+	}
+	
+	public void test2(){
+		UiSelector checkmore = new UiSelector().className("android.widget.TextView").index(0);
+		UiSelector checkmore2 = new UiSelector().className("android.widget.TextView").index(4);
+		UiSelector checkmore3 = new UiSelector().text("Check more");
+
+
 		
 	}
 	public void testDesc() throws UiObjectNotFoundException{
